@@ -7,7 +7,7 @@
   }
 
   // setup websocket with callbacks
-  var ws = new WebSocket('ws://localhost:80/');
+  var ws = new WebSocket('ws://localhost:80?username=gustavo&share_key=22222&customer=xxxxx');
   ws.onopen = function() {
     log('CONNECT');
   };

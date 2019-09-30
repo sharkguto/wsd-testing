@@ -1,1 +1,1 @@
-uvloop
+pyjwt>=1.7.1

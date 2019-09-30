@@ -21,5 +21,5 @@ if __name__ == "__main__":
 
         else:
             pass
-            # something_else(randint(0, 200))
+            something_else(randint(0, 200))
 
