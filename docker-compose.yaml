@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  wsd:
+    build:
+      context: .
+      dockerfile: devops/wsd.dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+
+
+  # db-redis:
+  #   build:
+  #     context: .
+  #     dockerfile: devops/redis.dockerfile
+  #   ports:
+  #     - "16379:6379"
+  #   environment: 
+  #     - ALLOW_EMPTY_PASSWORD=yes
