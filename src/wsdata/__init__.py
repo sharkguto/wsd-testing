@@ -7,8 +7,9 @@
 # @Date   : 9/30/2019, 3:03:03 PM
 
 
-from sys import stdout
+from sys import stdout, stdin
 from time import sleep
+
 
 # Count from 1 to 10 with a sleep
 while True:
@@ -16,5 +17,9 @@ while True:
         print(count + 1)
         stdout.flush()
         sleep(0.5)
+        line = stdin.readline().strip()
+        print('Hello %s!' % line)
+        stdout.flush() # Remember to flush
+        
     print("clean")
 

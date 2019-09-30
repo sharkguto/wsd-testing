@@ -17,4 +17,11 @@
   ws.onmessage = function(event) {
     log('MESSAGE: ' + event.data);
   };
+  
+  setInterval(async () => {
+    ws.send("Hello server!");
+  },1000);
+
+  
+
 </script>
