@@ -8,10 +8,13 @@
 import sys
 import select
 from random import randint
-from . import something, something_else
+from . import something, something_else, check_auth
 
 if __name__ == "__main__":
+    check_auth()
+
     while True:
+
         while sys.stdin in select.select([sys.stdin], [], [], 0)[0]:
             line = sys.stdin.readline()
             if line:

@@ -5,9 +5,9 @@
   function log(msg) {
     document.getElementById('log').textContent += msg + '\n';
   }
-
+  let key="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imd1c3Rhdm8iLCJjbGllbnQiOiJnbWZ0ZWNoIiwiZXhwIjoxNTY5OTc1MDA2LjY1MTg1OX0.YC4BBrMEG8kTgjpPpCPzpbEPaVk8q0PgZ8wQf457zA4";
   // setup websocket with callbacks
-  var ws = new WebSocket('ws://localhost:80?username=gustavo&share_key=22222&customer=xxxxx');
+  var ws = new WebSocket(`ws://localhost:80?key=${key}`);
   ws.onopen = function() {
     log('CONNECT');
   };

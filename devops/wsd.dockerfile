@@ -24,7 +24,7 @@ ENV PATH="/opt/wsd:${PATH}"
 COPY src/ /opt/wsd
 RUN chmod +x run.sh
 
-
+RUN python3 -m pip install pyjwt
 
 #ENTRYPOINT [ "websocketd", "--port=80", "sh", "run.sh" ]
 
