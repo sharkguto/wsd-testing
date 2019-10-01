@@ -9,6 +9,7 @@ FROM python:3.7-slim
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     curl \
     unzip \
+    gcc \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /opt/wsd
@@ -24,7 +25,9 @@ ENV PATH="/opt/wsd:${PATH}"
 COPY src/ /opt/wsd
 RUN chmod +x run.sh
 
-RUN python3 -m pip install pyjwt
+COPY requirements.txt .
+
+RUN python3 -m pip install -r requirements.txt
 
 #ENTRYPOINT [ "websocketd", "--port=80", "sh", "run.sh" ]
 

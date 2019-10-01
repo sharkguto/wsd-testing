@@ -31,10 +31,6 @@ CLIENT_KEY = {"gustavo": ["gmftech", "gmf-ia"], "gustavo2": ["gmf-ia", "balance"
 
 USER_TOKEN = jwt.decode(keys_data["key"], verify=False, algorithm="HS256")
 
-# self_name = os.path.basename(__file__)
-# if query.startswith(self_name):
-#     query = query[len(self_name) + 1 :]
-
 
 def check_auth():
     global USER_TOKEN
@@ -45,24 +41,24 @@ def check_auth():
         verify=True,
         algorithm="HS256",
     )
-    USER_TOKEN["exp"] = str(datetime.fromtimestamp(USER_TOKEN["exp"]))
+    USER_TOKEN["exp"] = datetime.fromtimestamp(USER_TOKEN["exp"])
 
     if not USER_TOKEN["client"] in CLIENT_KEY[USER_TOKEN["username"]]:
         print(f'Access denied! {USER_TOKEN["client"]}', flush=True)
         exit(2)
 
 
-def something(line):
+def receive_command_from_client(line):
     print("read input:", line, end="", flush=True)
 
 
-def something_else(count):
+def sending_to_client(dt: datetime):
     global AUTHENTICATE
 
     if not AUTHENTICATE:
         AUTHENTICATE = True
-        print(USER_TOKEN, flush=True)
+        print(f'expire at {USER_TOKEN["exp"]}', flush=True)
 
-    # print(count + 1, flush=True)
-    sleep(0.5)
+    print(dict(expire_in=str(USER_TOKEN["exp"] - dt)), flush=True)
+    sleep(2)
 

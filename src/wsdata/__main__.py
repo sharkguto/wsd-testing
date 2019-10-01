@@ -8,7 +8,8 @@
 import sys
 import select
 from random import randint
-from . import something, something_else, check_auth
+from . import receive_command_from_client, sending_to_client, check_auth
+from datetime import datetime
 
 if __name__ == "__main__":
     check_auth()
@@ -18,11 +19,11 @@ if __name__ == "__main__":
         while sys.stdin in select.select([sys.stdin], [], [], 0)[0]:
             line = sys.stdin.readline()
             if line:
-                something(line)
+                receive_command_from_client(line)
             else:  # an empty line means stdin has been closed
                 print("eof")
 
         else:
             pass
-            something_else(randint(0, 200))
+            sending_to_client(datetime.now())
 
